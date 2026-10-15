@@ -1,0 +1,19 @@
+name: Build Android APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install flet
+      - run: flet build apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Khata-APK
+          path: build/apk/**/*.apk
