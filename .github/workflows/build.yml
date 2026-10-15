@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install flet
-      - run: flet build apk
+      - run: yes | flet build apk
       - uses: actions/upload-artifact@v4
         with:
           name: Khata-APK
